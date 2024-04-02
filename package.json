@@ -1,5 +1,8 @@
 {
   "name": "esfliegt-esfliegt",
+  "long_name": "Es fliegt, es fliegt",
+  "short_name": "Es fliegt",
+  "description": "A website to display information about aircraft flying above you.",
   "private": true,
   "sideEffects": false,
   "type": "module",
