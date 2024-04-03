@@ -1,22 +1,19 @@
-import { Dispatch, FC, ReactNode, createContext, useContext } from "react";
-import { AircraftAction, AircraftStates, useAircraft } from "./useAircraft";
+import { FC, ReactNode, createContext, useContext } from "react";
+import { AircraftState, AircraftStates, useAircraft } from "./useAircraft";
 
 export interface AircraftContextProviderProps {
-  aircrafts: AircraftStates[];
+  aircraft?: AircraftStates[];
   children: ReactNode | ReactNode[];
 }
 
-const AircraftContext = createContext<{
-  state: AircraftStates[];
-  dispatch: Dispatch<AircraftAction>;
-} | null>(null);
+const AircraftContext = createContext<AircraftState | null>(null);
 
-export const useAircraftsContext = () => useContext(AircraftContext);
+export const useAircraftContext = () => useContext(AircraftContext);
 
-export const AircraftsContextProvider: FC<AircraftContextProviderProps> = (
+export const AircraftContextProvider: FC<AircraftContextProviderProps> = (
   props
 ) => {
-  const value = useAircraft(props.aircrafts);
+  const value = useAircraft(props.aircraft);
 
   return (
     <AircraftContext.Provider value={value}>
