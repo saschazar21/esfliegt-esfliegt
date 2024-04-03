@@ -1,11 +1,11 @@
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { PositionContextProvider } from "~/contexts/PositionContext";
 
 export default function App() {
   return (
@@ -17,10 +17,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <PositionContextProvider>
+          <Outlet />
+        </PositionContextProvider>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
