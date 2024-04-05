@@ -1,7 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useMemo } from "react";
 import AreaMap from "~/components/.client/Map/AreaMap";
+import { Aircraft } from "~/components/Aircraft";
 import { ClientOnly } from "~/components/ClientOnly";
 import { useAircraftContext } from "~/contexts/AircraftContext";
+import { usePositionContext } from "~/contexts/PositionContext";
+import { SelectedAircraftContextProvider } from "~/contexts/SelectedAircraftContext";
+import { getClosestAircraft } from "~/utils/helpers/geo";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,12 +16,20 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const position = usePositionContext();
   const aircraftContext = useAircraftContext();
 
-  console.log(aircraftContext);
+  const closestAircraft = useMemo(
+    () => getClosestAircraft(aircraftContext?.states ?? [], position.location),
+    [aircraftContext?.states, position.location]
+  );
+
   return (
     <main>
-      <ClientOnly>{() => <AreaMap />}</ClientOnly>
+      <SelectedAircraftContextProvider selected={closestAircraft}>
+        <ClientOnly>{() => <AreaMap />}</ClientOnly>
+        <Aircraft />
+      </SelectedAircraftContextProvider>
     </main>
   );
 }

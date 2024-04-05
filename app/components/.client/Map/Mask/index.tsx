@@ -2,6 +2,8 @@ import { LatLngBounds } from "leaflet";
 import { FC, useCallback, useMemo, useState } from "react";
 import { Polygon, useMap, useMapEvents } from "react-leaflet";
 
+import styles from "./Mask.module.css";
+
 export interface MaskProps {}
 
 export const Mask: FC<MaskProps> = () => {
@@ -12,7 +14,11 @@ export const Mask: FC<MaskProps> = () => {
     setMapBounds(map.getBounds());
   }, [map]);
 
-  useMapEvents({ resize: updateMapBounds, zoom: updateMapBounds });
+  useMapEvents({
+    moveend: updateMapBounds,
+    resize: updateMapBounds,
+    zoom: updateMapBounds,
+  });
 
   const positions = useMemo(() => {
     if (!map.options.maxBounds) {
@@ -39,8 +45,8 @@ export const Mask: FC<MaskProps> = () => {
 
   return map.options.maxBounds ? (
     <Polygon
+      className={styles.polygon}
       positions={positions}
-      color="#3b403b"
       stroke={false}
       fillOpacity={0.5}
     />

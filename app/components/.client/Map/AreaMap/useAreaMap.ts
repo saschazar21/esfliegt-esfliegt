@@ -18,7 +18,7 @@ export const useAreaMap = () => {
       zoomControl: false,
       maxBounds: bounds,
       maxBoundsViscosity: 0.382,
-      zoom: 12,
+      zoom: 10,
     }),
     [bounds, position.location]
   );

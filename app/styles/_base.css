@@ -8,7 +8,7 @@
 
   /* CSS HSL */
   --black-olive: hsla(120, 4%, 24%, 1);
-  --columbia-blue: hsla(196, 19%, 72%, 1);
+  --columbia-blue: hsla(196, 19%, 87%, 1);
   --polynesian-blue: hsla(211, 86%, 28%, 1);
   --platinum: hsla(120, 2%, 92%, 1);
   --ghost-white: hsla(231, 100%, 97%, 1);
@@ -18,13 +18,18 @@
   --color-bg-muted: var(--columbia-blue);
   --color-text: var(--black-olive);
   --color-text-muted: var(--polynesian-blue);
+
+  --color-aircraft-selected: hsla(4, 83%, 52%, 1);
+  --color-aircraft-disabled: var(--columbia-blue);
+  --color-aircraft-half: hsla(37, 82%, 61%, 1);
+  --color-aircraft-enabled: hsla(122, 44%, 68%, 1);
 }
 
 :where([data-dark]) {
   /* CSS HSL */
   --black-olive: hsla(120, 4%, 24%, 1);
   --columbia-blue: hsla(196, 19%, 72%, 1);
-  --polynesian-blue: hsla(211, 86%, 28%, 1);
+  --polynesian-blue: hsla(211, 86%, 15%, 1);
   --uranian-blue: hsla(211, 100%, 92%, 1);
   --night: hsla(120, 2%, 8%, 1);
 
@@ -47,15 +52,15 @@
     /* CSS HSL */
     --black-olive: hsla(120, 4%, 24%, 1);
     --columbia-blue: hsla(196, 19%, 72%, 1);
-    --polynesian-blue: hsla(211, 86%, 28%, 1);
+    --polynesian-blue: hsla(211, 86%, 15%, 1);
     --uranian-blue: hsla(211, 100%, 92%, 1);
     --night: hsla(120, 2%, 8%, 1);
 
     --color-bg: var(--night);
     --color-bg-light: var(--black-olive);
     --color-bg-muted: var(--polynesian-blue);
-    --color-text: var(--columbia-blue);
-    --color-text-muted: var(--uranian-blue);
+    --color-text: var(--uranian-blue);
+    --color-text-muted: var(--columbia-blue);
   }
 }
 
@@ -72,6 +77,7 @@
   --container-width-m: 640px;
   --container-width: 860px;
 
+  --border-radius-s: 4px;
   --border-radius: 8px;
   --border-width: 2px;
 
