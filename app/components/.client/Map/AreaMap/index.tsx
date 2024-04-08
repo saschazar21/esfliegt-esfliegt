@@ -20,7 +20,7 @@ const AreaMap: FC<AreaMapProps> = () => {
         <AreaMapContextProvider bounds={options.maxBounds} center={center}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"
           />
           <Avatar />
           <AircraftMarkers />

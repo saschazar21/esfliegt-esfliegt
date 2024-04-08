@@ -2,6 +2,8 @@
  * Website: https://www.adsbdb.com/
  */
 
+import { AircraftStates } from "~/contexts/AircraftContext/useAircraft";
+import { States } from "~/utils/api/opensky-network/helpers";
 import { ResponseError, RESPONSE_ERROR } from "~/utils/errors/response";
 
 export interface Aircraft {
@@ -141,5 +143,31 @@ export const getFlightRoute = async (callsign: string) => {
       : new ResponseError(
           `Error while fetching data for flight route using callsign "${callsign}".`
         );
+  }
+};
+
+export const adsbdbAdapter = async (
+  vector: States
+): Promise<AircraftStates> => {
+  try {
+    const data = await getAircraft(vector.icao, vector.callsign);
+
+    return {
+      ...vector,
+      ...data,
+    };
+  } catch (e) {
+    console.error((e as ResponseError).message);
+    try {
+      const data = await getFlightRoute(vector.callsign);
+
+      return {
+        ...vector,
+        ...data,
+      };
+    } catch (e) {
+      console.error((e as ResponseError).message);
+      return vector;
+    }
   }
 };
