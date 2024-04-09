@@ -1,0 +1,36 @@
+@keyframes loading {
+  to {
+    background-position: left;
+  }
+}
+
+.loading {
+  animation: loading 2s linear infinite;
+  min-height: calc(1em + var(--padding, 0) * 2);
+  background-repeat: no-repeat;
+  background: linear-gradient(
+      to right,
+      var(--bg-color) 33.3333%,
+      var(--loading-color, transparent),
+      var(--loading-color, transparent),
+      var(--bg-color) 66.6667%
+    )
+    right / 300% 100%;
+}
+
+.map {
+  --bg-color: var(--color-bg);
+  --loading-color: hsla(0, 0%, 50%, 0.25);
+
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 640px) {
+  .map {
+    min-height: 256px;
+    height: 38.2vh;
+  }
+}

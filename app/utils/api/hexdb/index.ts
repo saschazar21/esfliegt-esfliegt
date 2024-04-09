@@ -53,7 +53,7 @@ export const getFlightRoute = async (icao: string) => {
           const points = route.route.split("-");
 
           const [origin, midpoint, destination] = await Promise.all(
-            points.map(getAirport)
+            points.map(getAirportFromApi)
           );
 
           return {

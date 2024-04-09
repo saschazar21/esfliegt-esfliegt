@@ -1,9 +1,11 @@
 import { MapOptions } from "leaflet";
 import { useMemo } from "react";
+import { useAircraftContext } from "~/contexts/AircraftContext";
 import { usePositionContext } from "~/contexts/PositionContext";
 import { getBoundingBox } from "~/utils/helpers/geo";
 
 export const useAreaMap = () => {
+  const aircraftContext = useAircraftContext();
   const position = usePositionContext();
 
   const bounds = useMemo(() => {
@@ -25,6 +27,7 @@ export const useAreaMap = () => {
 
   return {
     center: position.location,
+    isLoading: aircraftContext?.isLoading,
     options,
   };
 };

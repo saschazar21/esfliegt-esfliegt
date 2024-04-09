@@ -12,7 +12,7 @@ import { AreaMapContextProvider } from "./AreaMapContext";
 export interface AreaMapProps {}
 
 const AreaMap: FC<AreaMapProps> = () => {
-  const { options, center } = useAreaMap();
+  const { isLoading, center, options } = useAreaMap();
 
   return (
     <div data-full-bleed data-light>
@@ -23,7 +23,7 @@ const AreaMap: FC<AreaMapProps> = () => {
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"
           />
           <Avatar />
-          <AircraftMarkers />
+          {!isLoading && <AircraftMarkers />}
           <Mask />
         </AreaMapContextProvider>
       </MapContainer>

@@ -2,19 +2,15 @@ import { ResponseError } from "~/utils/errors/response";
 import { Airport } from "./adsbdb";
 
 export const getAircraftImage = async (hex: string, isThumbnail?: boolean) => {
-  const params = isThumbnail
-    ? new URLSearchParams([["thumbnail", "true"]])
-    : null;
+  const url = new URL(`${process.env.URL}/api/aircraft/${hex}/image`);
 
-  const url = `/api/aircraft/${hex}/image${
-    params ? `?${params.toString()}` : ""
-  }`;
+  isThumbnail && url.searchParams.set("thumbnail", "true");
 
   return fetch(url).then((res) => res.text());
 };
 
 export const getAirport = async (code: string) => {
-  const url = `/api/airport/${code}`;
+  const url = new URL(`${process.env.URL}/api/airport/${code}`);
 
   return fetch(url).then(async (res) => {
     const data = await (res.json() as Promise<Airport | { error: string }>);

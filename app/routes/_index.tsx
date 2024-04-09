@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import AreaMap from "~/components/.client/Map/AreaMap";
 import { Aircraft } from "~/components/Aircraft";
 import { ClientOnly } from "~/components/ClientOnly";
+import { FlightRoute } from "~/components/FlightRoute";
+import { MapLoading } from "~/components/Loading/MapLoading";
 import { useAircraftContext } from "~/contexts/AircraftContext";
 import { usePositionContext } from "~/contexts/PositionContext";
 import { SelectedAircraftContextProvider } from "~/contexts/SelectedAircraftContext";
@@ -27,7 +29,8 @@ export default function Index() {
   return (
     <main>
       <SelectedAircraftContextProvider selected={closestAircraft}>
-        <ClientOnly>{() => <AreaMap />}</ClientOnly>
+        <ClientOnly fallback={<MapLoading />}>{() => <AreaMap />}</ClientOnly>
+        <FlightRoute />
         <Aircraft />
       </SelectedAircraftContextProvider>
     </main>
