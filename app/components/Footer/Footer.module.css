@@ -1,0 +1,22 @@
+.wrapper {
+  --bg-color: var(--color-bg);
+  --text-color: var(--color-text-muted);
+
+  --padding: var(--space-m);
+
+  margin-top: var(--space-l);
+  padding: var(--padding) var(--space-xs);
+}
+
+.meta {
+  --gap: var(--space-m);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  text-align: center;
+}
+
+.heading {
+  font-size: var(--font-size-md);
+}

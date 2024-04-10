@@ -73,7 +73,7 @@
   --container-width-xs: 256px;
   --container-width-s: 480px;
   --container-width-m: 640px;
-  --container-width: 860px;
+  --container-width: 960px;
 
   --border-radius-s: 4px;
   --border-radius: 8px;
@@ -107,6 +107,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  min-height: 100vh;
   max-width: var(--container-width);
   overflow-x: hidden;
 }
@@ -154,4 +155,9 @@ main {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.container {
+  margin: var(--margin, 0) auto;
+  max-width: var(--container-width);
 }

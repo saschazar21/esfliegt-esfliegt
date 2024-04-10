@@ -2,7 +2,7 @@
   --bg-color: var(--color-bg-muted);
   --text-color: var(--color-text-muted);
 
-  --margin: var(--space-xs);
+  --margin: var(--space-s);
   --padding: var(--space-m);
   --gap: var(--space-m);
   --icon-size: var(--font-size-xl);

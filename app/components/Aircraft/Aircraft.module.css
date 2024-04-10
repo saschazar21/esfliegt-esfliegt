@@ -1,5 +1,5 @@
 .wrapper {
-  --margin: var(--space-xs);
+  --margin: var(--space-s);
   --padding: var(--space-m);
 
   flex-direction: column-reverse;
@@ -21,7 +21,7 @@
 }
 
 :where(.wrapper, .meta, .container, .category, .heading) {
-  --gap: var(--space-xs);
+  --gap: var(--space-s);
 
   display: flex;
   gap: var(--gap);

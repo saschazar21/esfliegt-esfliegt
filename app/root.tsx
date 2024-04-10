@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Footer } from "~/components/Footer";
 import { AircraftContextProvider } from "~/contexts/AircraftContext";
 import { PositionContextProvider } from "~/contexts/PositionContext";
 
@@ -53,6 +54,7 @@ export default function App() {
             <Outlet />
           </AircraftContextProvider>
         </PositionContextProvider>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

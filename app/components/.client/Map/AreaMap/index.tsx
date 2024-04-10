@@ -15,7 +15,7 @@ const AreaMap: FC<AreaMapProps> = () => {
   const { isLoading, center, options } = useAreaMap();
 
   return (
-    <div data-full-bleed data-light>
+    <div className={styles.wrapper} data-full-bleed data-light>
       <MapContainer className={styles.container} {...options}>
         <AreaMapContextProvider bounds={options.maxBounds} center={center}>
           <TileLayer
