@@ -99,20 +99,11 @@ export const getAircraftThumbnail = async (hex: string) => {
 export const parseAircraft = async (
   aircraft: Aircraft
 ): Promise<ADSBAircraft> => {
-  const { ModeS: hex, Registration: registration } = aircraft;
+  const { Registration: registration } = aircraft;
 
   const country = getRegisteredCountry(registration);
 
-  let [url_photo, url_photo_thumbnail]: (string | null)[] = [null, null];
-
-  try {
-    [url_photo, url_photo_thumbnail] = await Promise.all([
-      getAircraftImageFromApi(hex),
-      getAircraftImageFromApi(hex, true),
-    ]);
-  } catch (e) {
-    console.error(e);
-  }
+  const url_photo = await getAircraftImageFromApi(aircraft.ModeS, registration);
 
   return {
     icao_type: aircraft.ICAOTypeCode,
@@ -123,7 +114,6 @@ export const parseAircraft = async (
     registered_owner: aircraft.RegisteredOwners,
     registered_owner_operator_flag_code: aircraft.OperatorFlagCode,
     url_photo,
-    url_photo_thumbnail,
     ...(country
       ? {
           registered_owner_country_iso_name: country.code,

@@ -129,7 +129,7 @@
   { "prefix": "OO", "country": "Belgium", "code": "BE" },
   { "prefix": "OY", "country": "Denmark", "code": "DK" },
   {
-    "prefix": "P",
+    "prefix": "P-",
     "country": "Korea, Democratic People's Republic of",
     "code": "KP"
   },

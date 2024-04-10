@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment, useMemo } from "react";
 import { PiArrowCircleRight } from "react-icons/pi";
 import { Loading } from "~/components/Loading";
 import { useAircraftContext } from "~/contexts/AircraftContext";
@@ -13,6 +13,43 @@ export const FlightRoute: FC<FlightRouteProps> = () => {
   const [selectedAircraft] = useSelectedAircraftContext();
 
   const flightroute = selectedAircraft?.flightroute;
+
+  const airports = useMemo(() => {
+    if (!flightroute) {
+      return null;
+    }
+
+    return [
+      flightroute.origin,
+      flightroute.midpoint,
+      flightroute.destination,
+    ].map((airport, i) =>
+      airport ? (
+        <Fragment key={airport.iata_code}>
+          {i > 0 && (
+            <PiArrowCircleRight
+              className={styles.icon}
+              role="presentation"
+              aria-hidden="true"
+            />
+          )}
+          <section className={styles.airport}>
+            <h3 data-sr-only>Origin airport</h3>
+            <strong className={styles.heading}>{airport.iata_code}</strong>
+            <span>{airport.name}</span>
+            <small>
+              {airport.municipality}, {airport.country_name}
+            </small>
+            <img
+              src={`https://flagcdn.com/${airport.country_iso_name.toLowerCase()}.svg`}
+              alt={airport.country_name}
+              height="18"
+            />
+          </section>
+        </Fragment>
+      ) : null
+    );
+  }, [flightroute]);
 
   if (aircraftContext?.isLoading) {
     return <Loading className={styles.container} />;
@@ -38,56 +75,7 @@ export const FlightRoute: FC<FlightRouteProps> = () => {
               </small>
             ) : null}
           </div>
-          <section className={styles.airport}>
-            <h3 data-sr-only>Origin airport</h3>
-            <strong className={styles.heading}>
-              {flightroute.origin.iata_code}
-            </strong>
-            <span>{flightroute.origin.name}</span>
-            <img
-              src={`https://flagcdn.com/${flightroute.origin.country_iso_name.toLowerCase()}.svg`}
-              alt={flightroute.origin.country_name}
-              height="18"
-            />
-          </section>
-          {flightroute.midpoint ? (
-            <>
-              <PiArrowCircleRight
-                className={styles.icon}
-                role="presentation"
-                aria-hidden="true"
-              />
-              <section className={styles.airport}>
-                <h3 data-sr-only>Midpoint airport</h3>
-                <strong className={styles.heading}>
-                  {flightroute.midpoint.iata_code}
-                </strong>
-                <span>{flightroute.midpoint.name}</span>
-                <img
-                  src={`https://flagcdn.com/${flightroute.midpoint.country_iso_name.toLowerCase()}.svg`}
-                  alt={flightroute.midpoint.country_name}
-                  height="18"
-                />
-              </section>
-            </>
-          ) : null}
-          <PiArrowCircleRight
-            className={styles.icon}
-            role="presentation"
-            aria-hidden="true"
-          />
-          <section className={styles.airport}>
-            <h3 data-sr-only>Destination airport</h3>
-            <strong className={styles.heading}>
-              {flightroute.destination.iata_code}
-            </strong>
-            <span>{flightroute.destination.name}</span>
-            <img
-              src={`https://flagcdn.com/${flightroute.destination.country_iso_name.toLowerCase()}.svg`}
-              alt={flightroute.destination.country_name}
-              height="18"
-            />
-          </section>
+          {airports}
         </>
       ) : (
         <h2 data-no-flightroute className={styles.heading}>

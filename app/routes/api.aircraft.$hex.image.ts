@@ -1,21 +1,16 @@
 import { LoaderFunction } from "@remix-run/node";
-import {
-  getAircraftImage,
-  getAircraftThumbnail,
-} from "~/utils/api/hexdb/helpers";
+import { getAircraftImageURL } from "~/utils/api/airport-data";
 import { RESPONSE_ERROR, ResponseError } from "~/utils/errors/response";
 import { ONE_WEEK } from "~/utils/helpers/date";
 
 export const loader: LoaderFunction = async ({ params, request }) => {
   const { searchParams } = new URL(request.url);
-  const isThumbnail = searchParams.get("thumbnail") === "true";
+  const registration = searchParams.get("registration") ?? undefined;
 
   const hex = params.hex as string;
 
-  const getImage = isThumbnail ? getAircraftThumbnail : getAircraftImage;
-
   try {
-    const url = await getImage(hex);
+    const url = await getAircraftImageURL(hex, registration);
 
     return new Response(url, {
       status: 200,

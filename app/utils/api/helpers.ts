@@ -1,12 +1,12 @@
 import { ResponseError } from "~/utils/errors/response";
 import { Airport } from "./adsbdb";
 
-export const getAircraftImage = async (hex: string, isThumbnail?: boolean) => {
+export const getAircraftImage = async (hex: string, registration?: string) => {
   const url = new URL(`${process.env.URL}/api/aircraft/${hex}/image`);
 
-  isThumbnail && url.searchParams.set("thumbnail", "true");
+  registration && url.searchParams.set("registration", registration);
 
-  return fetch(url).then((res) => res.text());
+  return fetch(url).then((res) => (res.status === 200 ? res.text() : null));
 };
 
 export const getAirport = async (code: string) => {

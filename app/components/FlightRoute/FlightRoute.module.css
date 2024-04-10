@@ -14,7 +14,7 @@
 }
 
 .container {
-  margin: var(--margin);
+  margin: var(--margin) var(--space-xs);
   padding: var(--padding);
 
   flex-wrap: wrap;
@@ -107,5 +107,12 @@
 @media (min-width: 640px) {
   .container {
     --gap: var(--space-l);
+    --margin: var(--space-m);
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    --margin: var(--space-l);
   }
 }

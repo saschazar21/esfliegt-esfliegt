@@ -108,10 +108,17 @@ body {
   flex-direction: column;
   margin: 0 auto;
   max-width: var(--container-width);
+  overflow-x: hidden;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+:where(picture, picture img) {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {

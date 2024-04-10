@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async ({ params }) => {
         ["content-type", "application/json"],
         // TODO: add caching strategy per provider
         //
-        // ["Netlify-Vary", "query=thumbnail"],
+        // ["Netlify-Vary", "query"],
         // [
         //   "Netlify-CDN-Cache-Control",
         //   `public, max-age=0, stale-while-revalidate=${Math.floor(
