@@ -13,15 +13,13 @@ export const loader: LoaderFunction = async ({ params }) => {
       status: 200,
       headers: [
         ["content-type", "application/json"],
-        // TODO: add caching strategy per provider
-        //
-        // ["Netlify-Vary", "query"],
-        // [
-        //   "Netlify-CDN-Cache-Control",
-        //   `public, max-age=0, stale-while-revalidate=${Math.floor(
-        //     ONE_YEAR / 1000
-        //   )}`,
-        // ],
+        ["Netlify-Vary", "query"],
+        [
+          "Netlify-CDN-Cache-Control",
+          `public, max-age=0, stale-while-revalidate=${Math.floor(
+            ONE_YEAR / 1000
+          )}`,
+        ],
         [
           "Cache-Control",
           `public, max-age=${Math.floor(

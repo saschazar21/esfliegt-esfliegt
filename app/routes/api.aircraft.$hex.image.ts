@@ -1,7 +1,7 @@
 import { LoaderFunction } from "@netlify/remix-runtime";
 import { getAircraftImageURL } from "~/utils/api/airport-data";
 import { RESPONSE_ERROR, ResponseError } from "~/utils/errors/response";
-import { ONE_WEEK } from "~/utils/helpers/date";
+import { ONE_WEEK, ONE_YEAR } from "~/utils/helpers/date";
 
 export const loader: LoaderFunction = async ({ params, request }) => {
   const { searchParams } = new URL(request.url);
@@ -15,15 +15,13 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     return new Response(url, {
       status: 200,
       headers: [
-        // TODO: add caching strategy per provider
-        //
-        // ["Netlify-Vary", "query=thumbnail"],
-        // [
-        //   "Netlify-CDN-Cache-Control",
-        //   `public, max-age=0, stale-while-revalidate=${Math.floor(
-        //     ONE_YEAR / 1000
-        //   )}`,
-        // ],
+        ["Netlify-Vary", "query=thumbnail"],
+        [
+          "Netlify-CDN-Cache-Control",
+          `public, max-age=0, stale-while-revalidate=${Math.floor(
+            ONE_YEAR / 1000
+          )}`,
+        ],
         [
           "Cache-Control",
           `public, max-age=${Math.floor(

@@ -61,15 +61,10 @@ export const loader: LoaderFunction = async ({ request }) => {
       status: 200,
       headers: {
         ...headers,
-        // TODO: add caching strategy per provider
-        //
-        // ["Netlify-Vary", "query"],
-        // [
-        //   "Netlify-CDN-Cache-Control",
-        //   `public, max-age=0, stale-while-revalidate=${Math.floor(
-        //     ONE_YEAR / 1000
-        //   )}`,
-        // ],
+        "Netlify-Vary": "query",
+        "Netlify-CDN-Cache-Control": `public, max-age=0, stale-while-revalidate=${Math.floor(
+          ONE_YEAR / 1000
+        )}`,
         "Cache-Control": `public, max-age=${Math.floor(
           ONE_YEAR / 1000
         )}, s-maxage=${Math.floor(ONE_YEAR / 1000)}, must-revalidate`,
