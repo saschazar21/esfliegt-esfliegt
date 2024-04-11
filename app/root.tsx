@@ -1,6 +1,7 @@
 import {
   Links,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -9,8 +10,15 @@ import { Footer } from "~/components/Footer";
 import { AircraftContextProvider } from "~/contexts/AircraftContext";
 import { PositionContextProvider } from "~/contexts/PositionContext";
 
+import pkg from "../package.json";
+
 import "~/styles/_typography.css";
 import "~/styles/_base.css";
+
+export const meta: MetaFunction = () => [
+  { title: pkg.long_name },
+  { name: "description", content: pkg.description },
+];
 
 export default function App() {
   return (
@@ -18,6 +26,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex, nofollow" />
         <link
           rel="preload"
           href="/fonts/Poppins-Light.ttf"
@@ -45,6 +54,35 @@ export default function App() {
           rel="stylesheet"
           href="https://esm.sh/gardevoir@1.0.0/dist/index.min.css"
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/icons/safari-pinned-tab.svg"
+          content={pkg.color}
+        />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="msapplication-TileColor" content={pkg.color} />
+        <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+        <meta name="theme-color" content={pkg.color} />
+
         <Meta />
         <Links />
       </head>

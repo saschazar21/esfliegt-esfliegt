@@ -41,6 +41,7 @@ export const AircraftMarker: FC<AircraftMarkerProps> = ({ states }) => {
       <PiAirplaneFill
         className={className}
         style={{ transform: `scale(1) rotate(${states.bearing}deg)` }}
+        data-light
       />
     </CustomMarker>
   ) : null;

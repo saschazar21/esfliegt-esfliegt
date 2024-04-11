@@ -12,15 +12,15 @@ import { AreaMapContextProvider } from "./AreaMapContext";
 export interface AreaMapProps {}
 
 const AreaMap: FC<AreaMapProps> = () => {
-  const { isLoading, center, options } = useAreaMap();
+  const { isLoading, center, options, tileUrl } = useAreaMap();
 
   return (
-    <div className={styles.wrapper} data-full-bleed data-light>
+    <div className={styles.wrapper} data-full-bleed>
       <MapContainer className={styles.container} {...options}>
         <AreaMapContextProvider bounds={options.maxBounds} center={center}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"
+            url={tileUrl}
           />
           <Avatar />
           {!isLoading && <AircraftMarkers />}

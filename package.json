@@ -3,9 +3,14 @@
   "long_name": "Es fliegt, es fliegt",
   "short_name": "Es fliegt",
   "description": "A website to display information about aircraft flying above you.",
+  "color": "#052547",
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saschazar21/esfliegt-esfliegt"
+  },
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
