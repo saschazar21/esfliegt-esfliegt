@@ -1,35 +1,30 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    {
-      name: "description",
-      content: "Welcome to Remix! Using Vite and Cloudflare!",
-    },
-  ];
-};
+import { useMemo } from "react";
+import AreaMap from "~/components/.client/Map/AreaMap";
+import { Aircraft } from "~/components/Aircraft";
+import { ClientOnly } from "~/components/ClientOnly";
+import { FlightRoute } from "~/components/FlightRoute";
+import { MapLoading } from "~/components/Loading/MapLoading";
+import { useAircraftContext } from "~/contexts/AircraftContext";
+import { usePositionContext } from "~/contexts/PositionContext";
+import { SelectedAircraftContextProvider } from "~/contexts/SelectedAircraftContext";
+import { getClosestAircraft } from "~/utils/helpers/geo";
 
 export default function Index() {
+  const position = usePositionContext();
+  const aircraftContext = useAircraftContext();
+
+  const closestAircraft = useMemo(
+    () => getClosestAircraft(aircraftContext?.states ?? [], position.location),
+    [aircraftContext?.states, position.location]
+  );
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (with Vite and Cloudflare)</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/"
-            rel="noreferrer"
-          >
-            Cloudflare Pages Docs - Remix guide
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <main>
+      <SelectedAircraftContextProvider selected={closestAircraft}>
+        <ClientOnly fallback={<MapLoading />}>{() => <AreaMap />}</ClientOnly>
+        <FlightRoute />
+        <Aircraft />
+      </SelectedAircraftContextProvider>
+    </main>
   );
 }

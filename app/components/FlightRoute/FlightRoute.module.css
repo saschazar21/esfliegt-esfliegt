@@ -1,0 +1,118 @@
+:where(.container, .airport) {
+  --bg-color: var(--color-bg-muted);
+  --text-color: var(--color-text-muted);
+
+  --margin: var(--space-s);
+  --padding: var(--space-m);
+  --gap: var(--space-m);
+  --icon-size: var(--font-size-xl);
+  --opacity: 0.382;
+
+  align-items: flex-start;
+  display: flex;
+  gap: var(--gap);
+}
+
+.container {
+  margin: var(--margin) var(--space-xs);
+  padding: var(--padding);
+
+  flex-wrap: wrap;
+  position: relative;
+  border-radius: var(--border-radius);
+}
+
+.container[data-has-midpoint] {
+  --gap: var(--space-s);
+}
+
+.meta {
+  --gap: var(--space-l);
+
+  flex: 1 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  margin-bottom: var(--space-m);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-extended);
+}
+
+.meta > small {
+  --gap: var(--space-s);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  text-align: center;
+}
+
+.airport {
+  --local-gap: var(--space-m);
+
+  flex: 1 1
+    calc(50% - var(--gap) - var(--padding) * 0.5 - var(--icon-size) * 0.5);
+  flex-direction: column;
+  gap: var(--local-gap);
+}
+
+.airport:first-of-type {
+  align-items: flex-end;
+  text-align: right;
+}
+
+[data-has-midpoint] .airport {
+  flex: 1 1
+    calc(
+      33.3333% - var(--gap) * 1.33333 - var(--padding) * 0.66667 -
+        var(--icon-size) * 0.66667
+    );
+}
+
+[data-has-midpoint] .airport:nth-of-type(2) {
+  align-items: center;
+  text-align: center;
+}
+
+.heading {
+  font-size: var(--font-size-xxl);
+  line-height: 1;
+}
+
+.heading[data-no-flightroute] {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.icon {
+  flex: 1 0 auto;
+  margin-top: var(--space-xs);
+  height: var(--icon-size);
+  width: var(--icon-size);
+  opacity: var(--opacity);
+}
+
+.badge {
+  --bg-color: var(--color-bg);
+  --padding: var(--space-xs);
+
+  border-radius: var(--border-radius-s);
+  padding: var(--padding) var(--space-s);
+}
+
+@media (min-width: 640px) {
+  .container {
+    --gap: var(--space-l);
+    --margin: var(--space-m);
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    --margin: var(--space-l);
+  }
+}

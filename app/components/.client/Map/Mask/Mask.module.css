@@ -1,0 +1,5 @@
+.polygon {
+  --text-color: var(--color-text);
+
+  fill: currentColor;
+}

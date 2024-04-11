@@ -1,0 +1,31 @@
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+}
+
+.icon {
+  animation: appear var(--animation-duration) ease;
+  stroke: var(--color-text);
+  stroke-width: 0.75rem;
+}
+
+.icon:is(:hover, :focus) {
+  --text-color: var(--color-aircraft-selected);
+}
+
+.none {
+  --text-color: var(--color-aircraft-disabled);
+}
+
+.half {
+  --text-color: var(--color-aircraft-half);
+}
+
+.full {
+  --text-color: var(--color-aircraft-enabled);
+}
+
+.selected {
+  --text-color: var(--color-aircraft-selected);
+}
