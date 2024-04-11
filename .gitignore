@@ -176,3 +176,25 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+
+### Remix ###
+node_modules
+/.cache
+/public/build
+/build
+/public/build
+
+### Remix+CloudflarePages ###
+/functions/\[\[path\]\].js
+/functions/\[\[path\]\].js.map
+
+### Remix+Netlify ###
+/.netlify
+
+### Remix+Vercel ###
+.vercel
+.output
+/api/index.js
+/api/index.js.map
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,node,remix,remix+cloudflarepages,remix+netlify,remix+vercel
