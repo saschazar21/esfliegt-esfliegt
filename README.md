@@ -5,7 +5,7 @@
   <strong>A website to display information about aircraft flying above you.</strong>
   <br />
   <br />
-  <a href="https://github.com/saschazar21/bingobaby/actions/workflows/lint.yml"><img alt="GitHub Actions: Lint workflow" src="https://github.com/saschazar21/bingobaby/actions/workflows/lint.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
+  <a href="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml"><img alt="GitHub Actions: Build workflow" src="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
   <br />
   <br />
   <br />
