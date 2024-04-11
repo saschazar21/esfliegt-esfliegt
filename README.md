@@ -1,41 +1,70 @@
-# Welcome to Remix!
+<div align="center">
+  <img alt="The icon of the website, showing stylized film perforations surrounding stylized diaphragm blades" src="public/icons/android-chrome-512x512.png" width="192px" />
+  <br />
+  <h1>Es fliegt, es fliegt</h1>
+  <strong>A website to display information about aircraft flying above you.</strong>
+  <br />
+  <br />
+  <a href="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml"><img alt="GitHub Actions: Build workflow" src="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
+  <br />
+  <br />
+  <br />
+  <img src="public/screenshots/screen_mobile_2_light.jpg" alt="A screenshot of the index page on mobile with route data in light mode" width="262" height="480">&nbsp;
+  <img src="public/screenshots/screen_mobile_2_dark.jpg" alt="A screenshot of the index page on mobile with route data in dark mode" width="262" height="480">
+  <br />
+  <br />
+  <br />
+</div>
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+## What is it?
 
-## Netlify Setup
+This repository contains the source code of a website for displaying aircraft in the current vicinity of 20km around a detected geo location.
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+## Getting started
 
-```sh
-npm i -g netlify-cli
-```
+### Prerequisites
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+The following prerequisites are needed to successfully launch this project locally:
 
-```sh
-npm i -g netlify-cli@latest
-```
+#### Runtimes
 
-2. Sign up and log in to Netlify:
+- [Node.js v20+](https://nodejs.org/en/)
 
-```sh
-netlify login
-```
+- [Yarn](https://yarnpkg.dev/) or similar
 
-3. Create a new site:
+### Quick start
 
-```sh
-netlify init
-```
+1. Copy `.env.sample` to `.env` and populate the environment variables
 
-## Development
+   ```bash
+   cp .env.sample .env
+   ```
 
-Ensure all packages are installed by running:
+2. Install dependencies
 
-```sh
-npm install
-```
+   ```bash
+   yarn # or npm install
+   ```
+
+3. Run the build
+
+   ```bash
+   yarn build # or npm run build
+   ```
+
+4. Run the local server
+
+   ```bash
+   yarn start # or npm start
+   ```
+
+--- OR ---
+
+5. Run development preview
+
+   ```bash
+   yarn dev # or npm run dev
+   ```
 
 Run
 
@@ -57,12 +86,10 @@ Your site will be available at [http://localhost:8888](http://localhost:8888). N
 
 ## Deployment
 
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
+`// TODO`
 
-```sh
-# preview deployment
-netlify deploy --build
+## License
 
-# production deployment
-netlify deploy --build --prod
-```
+Licensed under the MIT license.
+
+Copyright ©️ 2024 [Sascha Zarhuber](https://sascha.work)

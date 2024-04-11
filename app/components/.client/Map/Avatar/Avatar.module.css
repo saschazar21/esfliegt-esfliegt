@@ -1,0 +1,13 @@
+.icon {
+  --bg-color: var(--color-bg-light);
+  --text-color: var(--color-text);
+
+  position: relative;
+  border-radius: 9999px;
+  border-width: var(--border-width);
+  border-style: solid;
+}
+
+.icon path {
+  transform: translateY(12.5%);
+}
