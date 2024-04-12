@@ -1,0 +1,163 @@
+:where(:root, [data-light]) {
+  /* CSS HSL */
+  --black-olive: hsla(120, 4%, 24%, 1);
+  --columbia-blue: hsla(196, 19%, 87%, 1);
+  --polynesian-blue: hsla(211, 86%, 28%, 1);
+  --platinum: hsla(120, 2%, 92%, 1);
+  --cafe-noir: hsla(28, 31%, 24%, 1);
+  --linen: hsla(28, 31%, 88%, 1);
+  --ghost-white: hsla(231, 100%, 97%, 1);
+
+  --color-bg: var(--platinum);
+  --color-bg-light: var(--ghost-white);
+  --color-bg-muted: var(--linen);
+  --color-bg-special: var(--columbia-blue);
+  --color-text: var(--black-olive);
+  --color-text-muted: var(--cafe-noir);
+  --color-text-special: var(--polynesian-blue);
+
+  --color-aircraft-selected: hsla(4, 83%, 52%, 1);
+  --color-aircraft-disabled: var(--columbia-blue);
+  --color-aircraft-half: hsla(37, 82%, 61%, 1);
+  --color-aircraft-enabled: hsla(122, 44%, 68%, 1);
+}
+
+:where([data-dark]) {
+  /* CSS HSL */
+  --black-olive: hsla(120, 4%, 24%, 1);
+  --columbia-blue: hsla(196, 19%, 72%, 1);
+  --polynesian-blue: hsla(211, 86%, 15%, 1);
+  --uranian-blue: hsla(211, 100%, 92%, 1);
+  --cafe-noir: hsla(28, 31%, 14%, 1);
+  --linen: hsla(28, 31%, 88%, 1);
+  --night: hsla(120, 2%, 8%, 1);
+
+  --color-bg: var(--night);
+  --color-bg-light: var(--cafe-noir);
+  --color-bg-muted: var(--black-olive);
+  --color-bg-special: var(--polynesian-blue);
+  --color-text: var(--uranian-blue);
+  --color-text-muted: var(--linen);
+  --color-text-special: var(--columbia-blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(:root:not([data-light])) {
+    /* CSS HSL */
+    --black-olive: hsla(120, 4%, 24%, 1);
+    --columbia-blue: hsla(196, 19%, 72%, 1);
+    --polynesian-blue: hsla(211, 86%, 15%, 1);
+    --uranian-blue: hsla(211, 100%, 92%, 1);
+    --cafe-noir: hsla(28, 31%, 14%, 1);
+    --linen: hsla(28, 31%, 88%, 1);
+    --night: hsla(120, 2%, 8%, 1);
+
+    --color-bg: var(--night);
+    --color-bg-light: var(--cafe-noir);
+    --color-bg-muted: var(--black-olive);
+    --color-bg-special: var(--polynesian-blue);
+    --color-text: var(--uranian-blue);
+    --color-text-muted: var(--linen);
+    --color-text-special: var(--columbia-blue);
+  }
+}
+
+:root {
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  --container-width-xs: 256px;
+  --container-width-s: 480px;
+  --container-width-m: 640px;
+  --container-width: 960px;
+
+  --border-radius-s: 4px;
+  --border-radius: 8px;
+  --border-width: 2px;
+
+  --duration: 300ms;
+  --animation-duration: 400ms;
+
+  --scrollbar-width: var(--space-s);
+}
+
+@media (prefers-reduced-motion) {
+  :root {
+    --duration: 0;
+    --animation-duration: 0;
+  }
+}
+
+* {
+  background-color: var(--bg-color, transparent);
+  color: var(--text-color, inherit);
+  border-color: var(--border-color, var(--text-color, inherit));
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: var(--container-width);
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+:where(picture, picture img) {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-button {
+  background-color: transparent;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: var(--border-radius);
+  background-color: var(--color-text-muted);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+[data-full-bleed] {
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+}
+
+[data-sr-only] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  margin: var(--margin, 0) auto;
+  max-width: var(--container-width);
+}

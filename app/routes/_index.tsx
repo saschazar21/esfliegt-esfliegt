@@ -1,41 +1,30 @@
-import type { MetaFunction } from "@vercel/remix";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+import { useMemo } from "react";
+import AreaMap from "~/components/.client/Map/AreaMap";
+import { Aircraft } from "~/components/Aircraft";
+import { ClientOnly } from "~/components/ClientOnly";
+import { FlightRoute } from "~/components/FlightRoute";
+import { MapLoading } from "~/components/Loading/MapLoading";
+import { useAircraftContext } from "~/contexts/AircraftContext";
+import { usePositionContext } from "~/contexts/PositionContext";
+import { SelectedAircraftContextProvider } from "~/contexts/SelectedAircraftContext";
+import { getClosestAircraft } from "~/utils/helpers/geo";
 
 export default function Index() {
+  const position = usePositionContext();
+  const aircraftContext = useAircraftContext();
+
+  const closestAircraft = useMemo(
+    () => getClosestAircraft(aircraftContext?.states ?? [], position.location),
+    [aircraftContext?.states, position.location]
+  );
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <main>
+      <SelectedAircraftContextProvider selected={closestAircraft}>
+        <ClientOnly fallback={<MapLoading />}>{() => <AreaMap />}</ClientOnly>
+        <FlightRoute />
+        <Aircraft />
+      </SelectedAircraftContextProvider>
+    </main>
   );
 }
