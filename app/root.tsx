@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/remix";
 import { Footer } from "~/components/Footer";
 import { AircraftContextProvider } from "~/contexts/AircraftContext";
 import { PositionContextProvider } from "~/contexts/PositionContext";
@@ -97,6 +98,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

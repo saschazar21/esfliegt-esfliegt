@@ -1,6 +1,6 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { installGlobals } from "@remix-run/node";
-import { vercelPreset } from '@vercel/remix/vite';
+import { vercelPreset } from "@vercel/remix/vite";
 import { parse } from "dotenv";
 import { readFileSync } from "fs";
 import { resolve } from "path";
@@ -15,7 +15,10 @@ const parsedEnvSample = parse(envSample);
 const ENV_WHITELIST = [...Object.keys(parsedEnvSample)];
 
 export default ({ mode }: ConfigEnv) => {
-  process.env = Object.assign(process.env, loadEnv(mode, process.cwd(), ""));
+  process.env = Object.assign(
+    process.env,
+    loadEnv(mode, resolve(process.cwd(), ".vercel"), "")
+  );
 
   // This collects the whitelisted environment variables from the global process.env object
   const env = ENV_WHITELIST.reduce((prev, current): Record<string, string> => {
@@ -29,6 +32,9 @@ export default ({ mode }: ConfigEnv) => {
     return {
       ...prev,
       [current]: process.env[current],
+      URL: (process.env.VERCEL_ENV === "production"
+        ? process.env.URL
+        : process.env.VERCEL_URL) as string,
     };
   }, {});
 
