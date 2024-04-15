@@ -3,7 +3,8 @@ import { scanAircraft } from "~/utils/api";
 import { ResponseError } from "~/utils/errors/response";
 import { Point } from "~/utils/helpers/geo";
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ context, request }) => {
+  const { env } = context.cloudflare;
   const url = new URL(request.url);
 
   const [latitude, longitude] = [
@@ -21,7 +22,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
     const location: Point = [parseFloat(latitude), parseFloat(longitude)];
 
-    const aircraft = await scanAircraft(location);
+    const aircraft = await scanAircraft(env.CF_PAGES_URL, location);
 
     return json({ data: aircraft });
   } catch (e) {

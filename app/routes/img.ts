@@ -3,11 +3,10 @@ import { RESPONSE_ERROR, ResponseError } from "~/utils/errors/response";
 import { ONE_YEAR } from "~/utils/helpers/date";
 import { BASE_URL } from "~/utils/helpers/image";
 
-const IMAGEKIT_ID = process.env.IMAGEKIT_ID;
-
 const ALLOWED_HOSTNAMES = ["cdn.jetphotos.com", "cdn.airport-data.com"];
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ context, request }) => {
+  const { env } = context.cloudflare;
   const { searchParams } = new URL(request.url);
   const userAgent = request.headers.get("user-agent");
 
@@ -21,7 +20,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const tr = transformations ? `/tr:${transformations}` : "";
 
-  const url = new URL(`/${IMAGEKIT_ID}${tr}/${src}`, BASE_URL);
+  const url = new URL(`/${env.IMAGEKIT_ID}${tr}/${src}`, BASE_URL);
 
   try {
     try {

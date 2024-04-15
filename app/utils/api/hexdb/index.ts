@@ -41,7 +41,7 @@ export const getAircraft = async (hex: string) => {
   }
 };
 
-export const getFlightRoute = async (icao: string) => {
+export const getFlightRoute = async (origin: string, icao: string) => {
   const url = new URL(`${BASE_URL}${BASE_PATH}/route/iata/${icao}`);
 
   try {
@@ -53,7 +53,7 @@ export const getFlightRoute = async (icao: string) => {
           const points = route.route.split("-");
 
           const [origin, midpoint, destination] = await Promise.all(
-            points.map(getAirportFromApi)
+            points.map((code) => getAirportFromApi(origin, code))
           );
 
           return {
@@ -113,7 +113,10 @@ export const getAirport = async (iata: string) => {
   }
 };
 
-export const hexdbAdapter = async (vector: States): Promise<AircraftStates> => {
+export const hexdbAdapter = async (
+  origin: string,
+  vector: States
+): Promise<AircraftStates> => {
   let aircraft: ADSBAircraft | undefined = undefined;
   let airline: Airline | null = null;
   let flightroute: Omit<ADSBFlightRoute, "airline"> | undefined = undefined;
@@ -134,7 +137,7 @@ export const hexdbAdapter = async (vector: States): Promise<AircraftStates> => {
   }
 
   try {
-    flightroute = await getFlightRoute(vector.callsign);
+    flightroute = await getFlightRoute(origin, vector.callsign);
   } catch (e) {
     console.error(e);
   }

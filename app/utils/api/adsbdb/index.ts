@@ -146,6 +146,7 @@ export const getFlightRoute = async (callsign: string) => {
 };
 
 export const adsbdbAdapter = async (
+  _origin: string,
   vector: States
 ): Promise<AircraftStates> => {
   try {

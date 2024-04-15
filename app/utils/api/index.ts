@@ -24,16 +24,20 @@ export { getStateVectorsByAircraft, getStateVectorsByBoundingBox };
  * @returns {States[]} an array of populated aircraft data.
  */
 export const scanAircraft = async (
+  origin: string,
   location: Point,
   radius?: number,
-  adapter: (vector: States) => Promise<AircraftStates> = hexdbAdapter
+  adapter: (
+    origin: string,
+    vector: States
+  ) => Promise<AircraftStates> = hexdbAdapter
 ) => {
   const bbox = getBoundingBox(location, radius);
 
   try {
     const states = await getStateVectorsByBoundingBox(bbox);
 
-    return Promise.all(states.map(adapter));
+    return Promise.all(states.map((vector) => adapter(origin, vector)));
   } catch (e) {
     console.error(e);
 

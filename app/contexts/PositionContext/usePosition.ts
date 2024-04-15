@@ -82,6 +82,8 @@ export const usePosition = (initLocation: Point) => {
   }, [errorCallback, successCallback]);
 
   useEffect(() => {
+    updateLocation();
+
     typeof window !== "undefined" &&
       window.addEventListener("focus", updateLocation);
 
