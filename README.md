@@ -1,11 +1,11 @@
 <div align="center">
   <img alt="The icon of the website, showing stylized film perforations surrounding stylized diaphragm blades" src="public/icons/android-chrome-512x512.png" width="192px" />
   <br />
-  <h1>Es fliegt, es fliegt</h1>
+  <h1><a href="https://esfliegt.netlify.app">Es fliegt, es fliegt</a></h1>
   <strong>A website to display information about aircraft flying above you.</strong>
   <br />
   <br />
-  <a href="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml"><img alt="GitHub Actions: Build workflow" src="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
+  <a href="https://github.com/saschazar21/esfliegt-esfliegt/actions/workflows/deploy.yml"><img alt="GitHub Actions: Deploy workflow" src="https://github.com/saschazar21/esfliegt-esfliegt/actions/workflows/deploy.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
   <br />
   <br />
   <br />
@@ -19,6 +19,10 @@
 ## What is it?
 
 This repository contains the source code of a website for displaying aircraft in the current vicinity of 20km around a detected geo location.
+
+> [!NOTE]
+>
+> This is the **Netlify Edge** branch. To compare it against other deployment providers, visit the [Cloudflare Pages](/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branch.
 
 ## Getting started
 
@@ -66,27 +70,22 @@ The following prerequisites are needed to successfully launch this project local
    yarn dev # or npm run dev
    ```
 
-Run
-
-```sh
-netlify dev
-```
-
-Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
-
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-netlify serve
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
 ## Deployment
 
-`// TODO`
+> [!TIP]  
+> Do not forget to set the `IMAGEKIT_ID` environment variable in the Netlify dashboard.
+
+First, build your app for production:
+
+```sh
+pnpm netlify build --context production
+```
+
+Then, deploy your app to Cloudflare Pages:
+
+```sh
+pnpm netlify deploy --prod
+```
 
 ## License
 
