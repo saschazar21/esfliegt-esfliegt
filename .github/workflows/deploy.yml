@@ -60,7 +60,9 @@ jobs:
       - name: Deploy to production
         if: ${{ startsWith(github.ref, 'refs/heads/vercel') }}
         run: |
-          pnpm build
+          vercel build \
+            --prod \
+            --token=${{ secrets.VERCEL_TOKEN }}
           vercel deploy \
             --prod \
             --prebuilt \
@@ -77,7 +79,7 @@ jobs:
       - name: Deploy preview environment
         if: ${{ github.event.pull_request.state == 'open' }}
         run: |
-          pnpm build
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
           vercel deploy \
             --prebuilt \
             --token=${{ secrets.VERCEL_TOKEN }} \
