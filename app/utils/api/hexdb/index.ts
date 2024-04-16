@@ -18,8 +18,8 @@ import {
 
 export const BASE_PATH = "/api/v1";
 
-export const getAircraft = async (hex: string) => {
-  const url = new URL(`${BASE_URL}${BASE_PATH}/aircraft/${hex}`);
+export const getAircraft = async (origin: string, hex: string) => {
+  const url = new URL(`${BASE_PATH}/aircraft/${hex}`, BASE_URL);
 
   try {
     const data = await fetch(url).then((res) => {
@@ -31,7 +31,7 @@ export const getAircraft = async (hex: string) => {
       throw new ResponseError(`Failed to fetch aircraft data for "${hex}".`);
     });
 
-    return parseAircraft(data);
+    return parseAircraft(origin, data);
   } catch (e) {
     console.error(e);
 
@@ -41,8 +41,8 @@ export const getAircraft = async (hex: string) => {
   }
 };
 
-export const getFlightRoute = async (origin: string, icao: string) => {
-  const url = new URL(`${BASE_URL}${BASE_PATH}/route/iata/${icao}`);
+export const getFlightRoute = async (baseUrl: string, icao: string) => {
+  const url = new URL(`${BASE_PATH}/route/iata/${icao}`, BASE_URL);
 
   try {
     const data = await fetch(url).then(async (res) => {
@@ -53,7 +53,7 @@ export const getFlightRoute = async (origin: string, icao: string) => {
           const points = route.route.split("-");
 
           const [origin, midpoint, destination] = await Promise.all(
-            points.map((code) => getAirportFromApi(origin, code))
+            points.map((code) => getAirportFromApi(baseUrl, code))
           );
 
           return {
@@ -91,7 +91,7 @@ export const getFlightRoute = async (origin: string, icao: string) => {
 };
 
 export const getAirport = async (iata: string) => {
-  const url = new URL(`${BASE_URL}${BASE_PATH}/airport/iata/${iata}`);
+  const url = new URL(`${BASE_PATH}/airport/iata/${iata}`, BASE_URL);
 
   try {
     const data = await fetch(url).then((res) => {
@@ -122,7 +122,7 @@ export const hexdbAdapter = async (
   let flightroute: Omit<ADSBFlightRoute, "airline"> | undefined = undefined;
 
   try {
-    aircraft = await getAircraft(vector.icao);
+    aircraft = await getAircraft(origin, vector.icao);
 
     airline = {
       callsign: "N/A",

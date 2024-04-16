@@ -97,13 +97,18 @@ export const getAircraftThumbnail = async (hex: string) => {
 };
 
 export const parseAircraft = async (
+  origin: string,
   aircraft: Aircraft
 ): Promise<ADSBAircraft> => {
   const { Registration: registration } = aircraft;
 
   const country = getRegisteredCountry(registration);
 
-  const url_photo = await getAircraftImageFromApi(aircraft.ModeS, registration);
+  const url_photo = await getAircraftImageFromApi(
+    origin,
+    aircraft.ModeS,
+    registration
+  );
 
   return {
     icao_type: aircraft.ICAOTypeCode,

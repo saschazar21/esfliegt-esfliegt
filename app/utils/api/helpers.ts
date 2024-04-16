@@ -6,7 +6,7 @@ export const getAircraftImage = async (
   hex: string,
   registration?: string
 ) => {
-  const url = new URL(`${origin}/api/aircraft/${hex}/image`);
+  const url = new URL(`/api/aircraft/${hex}/image`, origin);
 
   registration && url.searchParams.set("registration", registration);
 
@@ -14,7 +14,7 @@ export const getAircraftImage = async (
 };
 
 export const getAirport = async (origin: string, code: string) => {
-  const url = new URL(`${origin}/api/airport/${code}`);
+  const url = new URL(`/api/airport/${code}`, origin);
 
   return fetch(url).then(async (res) => {
     const data = await (res.json() as Promise<Airport | { error: string }>);
