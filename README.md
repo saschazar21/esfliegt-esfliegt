@@ -5,7 +5,7 @@
   <strong>A website to display information about aircraft flying above you.</strong>
   <br />
   <br />
-  <a href="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml"><img alt="GitHub Actions: Build workflow" src="https://github.com/saschazar21/bingobaby/actions/workflows/build.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
+  <a href="https://github.com/saschazar21/esfliegt-esfliegt/actions/workflows/build.yml"><img alt="GitHub Actions: Build workflow" src="https://github.com/saschazar21/esfliegt-esfliegt/actions/workflows/build.yml/badge.svg" /></a> <img alt="License" src="https://img.shields.io/github/license/saschazar21/esfliegt-esfliegt" />
   <br />
   <br />
   <br />
@@ -19,6 +19,10 @@
 ## What is it?
 
 This repository contains the source code of a website for displaying aircraft in the current vicinity of 20km around a detected geo location.
+
+> [!NOTE]
+>
+> This is the base branch, which has the Node.js adapter for Remix enabled. To compare it against other deployment provider adapters, visit the [Cloudflare Pages](/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
 
 ## Getting started
 
@@ -68,7 +72,7 @@ The following prerequisites are needed to successfully launch this project local
 
 ## Deployment
 
-`// TODO`
+See either the [Cloudflare Pages](/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
 
 ## License
 
