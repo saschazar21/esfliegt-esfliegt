@@ -22,7 +22,7 @@ This repository contains the source code of a website for displaying aircraft in
 
 > [!NOTE]
 >
-> This is the base branch, which has the Node.js adapter for Remix enabled. To compare it against other deployment provider adapters, visit the [Cloudflare Pages](/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
+> This is the base branch, which has the Node.js adapter for Remix enabled. To compare it against other deployment provider adapters, visit the [Cloudflare Pages](https://github.com/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](https://github.com/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](https://github.com/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
 
 ## Getting started
 
