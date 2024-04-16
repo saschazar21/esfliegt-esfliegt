@@ -1,7 +1,7 @@
 <div align="center">
   <img alt="The icon of the website, showing stylized film perforations surrounding stylized diaphragm blades" src="public/icons/android-chrome-512x512.png" width="192px" />
   <br />
-  <h1>Es fliegt, es fliegt</h1>
+  <h1><a href="https://esfliegt.vercel.app">Es fliegt, es fliegt</a></h1>
   <strong>A website to display information about aircraft flying above you.</strong>
   <br />
   <br />
