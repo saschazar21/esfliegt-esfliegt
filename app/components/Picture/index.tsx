@@ -45,8 +45,6 @@ export const Picture: FC<PictureProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(isLoading);
-
   useEffect(() => {
     setIsLoading(true);
   }, [rest.src]);

@@ -22,7 +22,7 @@ This repository contains the source code of a website for displaying aircraft in
 
 > [!NOTE]
 >
-> This is the **Cloudflare Pages** branch. To compare it against other deployment providers, visit the [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branch.
+> This is the **Cloudflare Pages** branch. To compare it against other deployment providers, visit the [Netlify Edge](https://github.com/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](https://github.com/saschazar21/esfliegt-esfliegt/tree/vercel) branch.
 
 ## Getting started
 
