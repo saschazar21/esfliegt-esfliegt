@@ -1,5 +1,9 @@
 name: Deploy
 
+env:
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
 on:
   push:
     branches:
@@ -45,9 +49,16 @@ jobs:
       - name: Run build
         run: pnpm build
 
-      - name: Run deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy build/client --project-name=esfliegt
+      - name: Deploy to production
+        if: ${{ startsWith(github.ref, 'refs/heads/cloudflare-pages') }}
+        run: |
+          wrangler pages deploy build/client \
+            --branch=producion \
+            --project-name=esfliegt
+
+      - name: Deploy to preview branch
+        if: ${{ github.event.pull_request.state == 'open' }}
+        run: |
+          wrangler pages deploy build/client \
+            --branch=preview \
+            --project-name=esfliegt

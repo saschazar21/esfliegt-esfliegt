@@ -1,11 +1,6 @@
 module.exports = {
-	globDirectory: 'public/',
-	globPatterns: [
-		'**/*.{ico,svg,ttf,png,xml,jpg}'
-	],
-	swDest: 'public/sw.js',
-	ignoreURLParametersMatching: [
-		/^utm_/,
-		/^fbclid$/
-	]
+  globDirectory: "build/client/",
+  globPatterns: ["**/*.{ico,svg,ttf,png,xml,jpg}"],
+  swDest: "build/client/sw.js",
+  ignoreURLParametersMatching: [/^utm_/, /^fbclid$/],
 };
