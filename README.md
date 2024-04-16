@@ -1,7 +1,7 @@
 <div align="center">
   <img alt="The icon of the website, showing stylized film perforations surrounding stylized diaphragm blades" src="public/icons/android-chrome-512x512.png" width="192px" />
   <br />
-  <h1>Es fliegt, es fliegt</h1>
+  <h1><a href="https://esfliegt.pages.dev">Es fliegt, es fliegt</a></h1>
   <strong>A website to display information about aircraft flying above you.</strong>
   <br />
   <br />
@@ -20,6 +20,10 @@
 
 This repository contains the source code of a website for displaying aircraft in the current vicinity of 20km around a detected geo location.
 
+> [!NOTE]
+>
+> This is the **Cloudflare Pages** branch. To compare it against other deployment providers, visit the [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branch.
+
 ## Getting started
 
 ### Prerequisites
@@ -30,7 +34,7 @@ The following prerequisites are needed to successfully launch this project local
 
 - [Node.js v20+](https://nodejs.org/en/)
 
-- [Yarn](https://yarnpkg.dev/) or similar
+- [pnpm](https://pnpmpkg.dev/) or similar
 
 ### Quick start
 
@@ -43,19 +47,19 @@ The following prerequisites are needed to successfully launch this project local
 2. Install dependencies
 
    ```bash
-   yarn # or npm install
+   pnpm # or npm install
    ```
 
 3. Run the build
 
    ```bash
-   yarn build # or npm run build
+   pnpm build # or npm run build
    ```
 
 4. Run the local server
 
    ```bash
-   yarn start # or npm start
+   pnpm start # or npm start
    ```
 
 --- OR ---
@@ -63,35 +67,25 @@ The following prerequisites are needed to successfully launch this project local
 5. Run development preview
 
    ```bash
-   yarn dev # or npm run dev
+   pnpm dev # or npm run dev
    ```
-
-To run Wrangler:
-
-```sh
-npm run build
-npm run start
-```
 
 ## Deployment
 
-> [!WARNING]  
-> Cloudflare does _not_ use `wrangler.toml` to configure deployment bindings.
-> You **MUST** [configure deployment bindings manually in the Cloudflare dashboard][bindings].
+> [!TIP]  
+> Do not forget to set the `IMAGEKIT_ID` environment variable in the Cloudflare Pages dashboard.
 
 First, build your app for production:
 
 ```sh
-npm run build
+pnpm build
 ```
 
 Then, deploy your app to Cloudflare Pages:
 
 ```sh
-npm run deploy
+pnpm wrangler pages deploy build/client
 ```
-
-[bindings]: https://developers.cloudflare.com/pages/functions/bindings/
 
 ## License
 
