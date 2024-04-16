@@ -52,13 +52,13 @@ jobs:
       - name: Deploy to production
         if: ${{ startsWith(github.ref, 'refs/heads/cloudflare-pages') }}
         run: |
-          wrangler pages deploy build/client \
+          pnpm wrangler pages deploy build/client \
             --branch=producion \
             --project-name=esfliegt
 
       - name: Deploy to preview branch
         if: ${{ github.event.pull_request.state == 'open' }}
         run: |
-          wrangler pages deploy build/client \
+          pnpm wrangler pages deploy build/client \
             --branch=preview \
             --project-name=esfliegt
