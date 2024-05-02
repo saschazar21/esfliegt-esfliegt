@@ -72,7 +72,7 @@ The following prerequisites are needed to successfully launch this project local
 
 ## Deployment
 
-See either the [Cloudflare Pages](/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
+See either the [Cloudflare Pages](https://github.com/saschazar21/esfliegt-esfliegt/tree/cloudflare-pages), [Netlify Edge](https://github.com/saschazar21/esfliegt-esfliegt/tree/netlify-edge) or [Vercel](https://github.com/saschazar21/esfliegt-esfliegt/tree/vercel) branches.
 
 ## License
 
